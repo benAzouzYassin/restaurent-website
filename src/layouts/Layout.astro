@@ -30,5 +30,24 @@ const { title } = Astro.props;
 		background-color: #FEF5F6;
 		
 	}
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Use your desired background color */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Use your desired handle color */
+  border-radius: 4px; /* Adjust the border-radius as needed */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Use your desired handle color on hover */
+}
 </style>

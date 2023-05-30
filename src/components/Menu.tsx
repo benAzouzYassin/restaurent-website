@@ -1,37 +1,28 @@
-import React from 'react'
+import MenuCard from './MenuCard'
+import "../styles.css"
 
 function Menu() {
+
     return (
-        <section className=' pl-36 pr-36 h-[115vh]  flex'>
-            <div className='grid grid-cols-3 gap-x-10 h-full w-[90%] ml-auto mr-auto gap-y-10'>
-                <MenuCard imgUrl='/images/tabouna.jpg' price='10 DT' />
-                <MenuCard imgUrl='/images/sandwitchs.jpg' price='18 DT' />
-                <MenuCard imgUrl='/images/couscous.jfif' price='5 DT' />
-                <MenuCard imgUrl='/images/pizza.jfif' price='10 DT' />
+        <div className=' pl-36 pr-36'>
+            <h1 className=' text-5xl italic mb-5 font-bold'>Nos produits : </h1>
+            <section className='  flex flex-col  h-fit py-6 rounded-xl shadow-2xl border-[1px] border-black '>
+                <div className='grid grid-cols-3 gap-x-10  h-[700px] overflow-y-scroll w-[90%] ml-auto mr-auto gap-y-10 py-5'>
+                    <MenuCard imgUrl='/images/tabouna.jpg' price={5} id='1' productName='tabouna' />
+                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='2' productName='sandwitch' />
+                    <MenuCard imgUrl='/images/couscous.jfif' price={5} id='3' productName='couscous' />
+                    <MenuCard imgUrl='/images/pizza.jfif' price={5} id='4' productName='pizza' />
+                    <MenuCard imgUrl='/images/couscous.jfif' price={5} id='5' productName='couscous' />
+                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='6' productName='sandwitch' />
+                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='6' productName='sandwitch' />
+                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='6' productName='sandwitch' />
 
-                <MenuCard imgUrl='/images/couscous.jfif' price='8 DT' />
-                <MenuCard imgUrl='/images/sandwitchs.jpg' price='10 DT' />
-
-            </div>
-
-
-
-
-        </section>
+                </div>
+            </section>
+        </div>
     )
 }
-interface MenuCardProps {
-    imgUrl: string
-    price: string
-}
-function MenuCard(props: MenuCardProps) {
-    return <div className='flex flex-col bg-white rounded-xl shadow-xl'>
-        <div style={{ backgroundImage: `url(${props.imgUrl})` }} className='p-3 bg-[url("/images/tabouna.jpg")] bg-cover bg-center w-full h-3/4 rounded-t-xl'>
-            <span className='bg-red-600 text-white px-3 py-1 font-semibold rounded-lg text-sm'>{props.price}</span>
 
-        </div>
-        <button className='m-auto py-1 px-3 bg-red-600 text-white rounded-xl '>Commandez</button>
-    </div>
-}
+
 
 export default Menu

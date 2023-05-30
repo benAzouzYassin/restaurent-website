@@ -3,11 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from "../components/Navbar"
 import Intro from '../components/Intro';
 import Menu from '../components/Menu';
+import Contact from '../components/Contact';
 ---
 
 <Layout title="Karoui resto">
-	<Navbar/>
-	<Intro/>
-	<Menu/>
-</Layout>
+		<Navbar/>
+		<Intro/>
+		<Menu client:visible/>
+		<Contact/>
+	</Layout>
 

@@ -8,7 +8,7 @@ function Navbar() {
                 <a href="" className="hover:scale-105">Notre Menu</a>
                 <a href="" className="hover:scale-105">Contact</a>
             </div>
-            <img src="/images/cart.svg" alt="cart" width="35px" height="35px" className="hover:cursor-pointer hover:scale-95" />
+            <a href="/cart/">  <img src="/images/cart.svg" alt="cart" width="35px" height="35px" className="hover:cursor-pointer hover:scale-95" /></a>
             <button className="bg-[#FF6A55] p-2 rounded-2xl text-white text-xs font-semibold  italic hover:bg-orange-600 ml-[-15px]"> Commandez </button>
         </nav>
     )
