@@ -26,7 +26,7 @@ export const getProductCount = (productId: string, ordersState: Order[]) => {
 export const addNewProduct = (
   productId: string,
   productName: string,
-  producPrice: number,
+  productPrice: number,
   imgUrl: string
 ) => {
   const $orders = orders.value;
@@ -36,7 +36,7 @@ export const addNewProduct = (
       {
         id: productId,
         countInCart: 1,
-        price: producPrice,
+        price: productPrice,
         product: productName,
         img: imgUrl,
       },
@@ -63,10 +63,10 @@ export const removeAllProducts = () => {
   console.log("localstorage updated");
 };
 
-export const decrement = (productId: string) => {
+export const decrement = (productId: string, count = 1) => {
   const order = orders.value?.find((product) => product.id == productId);
   if (order && order.countInCart > 0) {
-    order.countInCart--;
+    order.countInCart -= count;
     localStorage.setItem("orders", JSON.stringify(orders.value));
     console.log("localstorage updated");
   }
@@ -74,10 +74,22 @@ export const decrement = (productId: string) => {
     removeProduct(order.id);
   }
 };
-export const increment = (productId: string) => {
+export const increment = (productId: string, count = 1) => {
   const order = orders.value?.find((product) => product.id == productId);
   if (order) {
-    order.countInCart++;
+    order.countInCart += count;
     localStorage.setItem("orders", JSON.stringify(orders.value));
+  }
+};
+
+export const updateProductCount = (productId: string, newCount: number) => {
+  const savedOrders: Order[] = JSON.parse(
+    localStorage.getItem("orders") ?? "[]"
+  );
+  const order = savedOrders.find((product) => product.id == productId);
+  if (order) {
+    order.countInCart = newCount;
+
+    localStorage.setItem("orders", JSON.stringify(savedOrders));
   }
 };

@@ -14,8 +14,8 @@ function Menu() {
                     <MenuCard imgUrl='/images/pizza.jfif' price={5} id='4' productName='pizza' />
                     <MenuCard imgUrl='/images/couscous.jfif' price={5} id='5' productName='couscous' />
                     <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='6' productName='sandwitch' />
-                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='6' productName='sandwitch' />
-                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='6' productName='sandwitch' />
+                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='7' productName='sandwitch' />
+                    <MenuCard imgUrl='/images/sandwitchs.jpg' price={5} id='8' productName='sandwitch' />
 
                 </div>
             </section>
