@@ -8,6 +8,7 @@ export interface Order {
   product: string;
   price: number;
   countInCart: number;
+  img: string;
 }
 
 export const orders = atom<Order[]>([]);
@@ -25,7 +26,8 @@ export const getProductCount = (productId: string, ordersState: Order[]) => {
 export const addNewProduct = (
   productId: string,
   productName: string,
-  producPrice: number
+  producPrice: number,
+  imgUrl: string
 ) => {
   const $orders = orders.value;
   if ($orders) {
@@ -36,6 +38,7 @@ export const addNewProduct = (
         countInCart: 1,
         price: producPrice,
         product: productName,
+        img: imgUrl,
       },
     ];
     orders.set(newOrders);
