@@ -11,7 +11,17 @@ function Cart() {
         setSavedOrders(savedOrders)
     }, [])
 
-    // TO DO : make the total interactive
+
+    const updatedCartState = (orderId: string, newCount: number) => {
+        const updated = savedOrders?.map(order => {
+            if (order.id === orderId) {
+                return { ...order, countInCart: newCount }
+            } else {
+                return order
+            }
+        })
+        setSavedOrders(updated)
+    }
 
     let total = 0
     savedOrders?.forEach(order => total += order.price * order.countInCart)
@@ -19,7 +29,7 @@ function Cart() {
         <div className="">
             <Navbar />
             <div className="flex flex-col gap-5 lg:pr-36 lg:pl-36 mt-10">
-                {savedOrders?.map(item => <CartItem key={item.id} item={item} />)}
+                {savedOrders?.map(item => <CartItem key={item.id} item={item} updatedCartState={updatedCartState} />)}
             </div >
             {total > 0 && <p className="mt-10 text-3xl font-bold w-full text-right lg:pr-36 lg:pl-36">
                 LA TOTALE : {total + " "}TND

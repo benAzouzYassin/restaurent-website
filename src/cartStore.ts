@@ -40,10 +40,10 @@ export const addNewProduct = (
         product: productName,
         img: imgUrl,
       },
-    ];
+    ].filter((order) => order.countInCart > 0);
+
     orders.set(newOrders);
     localStorage.setItem("orders", JSON.stringify(orders.value));
-    console.log("localstorage updated");
   }
 };
 
@@ -53,14 +53,12 @@ export const removeProduct = (productId: string) => {
     const newOrders = $orders?.filter((prod) => prod.id != productId);
     orders.set(newOrders);
     localStorage.setItem("orders", JSON.stringify(orders.value));
-    console.log("localstorage updated");
   }
 };
 
 export const removeAllProducts = () => {
   orders.set([]);
   localStorage.setItem("orders", JSON.stringify(orders.value));
-  console.log("localstorage updated");
 };
 
 export const decrement = (productId: string, count = 1) => {
@@ -68,7 +66,6 @@ export const decrement = (productId: string, count = 1) => {
   if (order && order.countInCart > 0) {
     order.countInCart -= count;
     localStorage.setItem("orders", JSON.stringify(orders.value));
-    console.log("localstorage updated");
   }
   if (order && order.countInCart < 1) {
     removeProduct(order.id);
@@ -89,7 +86,6 @@ export const updateProductCount = (productId: string, newCount: number) => {
   const order = savedOrders.find((product) => product.id == productId);
   if (order) {
     order.countInCart = newCount;
-
     localStorage.setItem("orders", JSON.stringify(savedOrders));
   }
 };

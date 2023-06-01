@@ -5,7 +5,7 @@ import { updateProductCount } from "../cartStore"
 
 interface CartItemProps {
     item: Order
-
+    updatedCartState: (orderId: string, newCount: number) => void
 }
 function CartItem(props: CartItemProps) {
     const { item } = props
@@ -13,6 +13,8 @@ function CartItem(props: CartItemProps) {
 
     useEffect(() => {
         updateProductCount(item.id, itemCount)
+        props.updatedCartState(item.id, itemCount)
+
     }, [itemCount])
 
     const handleItemCountChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +32,7 @@ function CartItem(props: CartItemProps) {
         }
     }, [])
     const countDecrement = useCallback((count: number) => {
+
         if (count > 1) {
             setItemCount(count - 1)
         } else {
