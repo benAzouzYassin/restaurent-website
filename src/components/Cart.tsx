@@ -31,9 +31,14 @@ function Cart() {
             <div className="flex flex-col gap-5 lg:pr-36 lg:pl-36 mt-10">
                 {savedOrders?.map(item => <CartItem key={item.id} item={item} updatedCartState={updatedCartState} />)}
             </div >
-            {total > 0 && <p className="mt-10 text-3xl font-bold w-full text-right lg:pr-36 lg:pl-36">
-                LA TOTALE : {total + " "}TND
-            </p>}
+            {total > 0 && <>
+                <p className="mt-10 text-3xl font-bold w-full text-right  flex  flex-col lg:pr-36 lg:pl-36">
+                    TOTALE : {total + " "}TND
+                    <button className="text-white  p-2 rounded-md text-lg font-medium bg-orange-500 hover:bg-orange-600 mt-10">commander</button>
+                </p>
+            </>
+            }
+
         </div>
     )
 }
