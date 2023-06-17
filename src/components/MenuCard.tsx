@@ -5,6 +5,8 @@ interface MenuCardProps {
     price: number
     productName: string
     id: string
+    ingredients: string[]
+    rating: number
 }
 function MenuCard(props: MenuCardProps) {
     const [isHovering, setIsHovering] = useState(false)
@@ -19,6 +21,7 @@ function MenuCard(props: MenuCardProps) {
     }, [])
 
 
+
     return <div className='flex flex-col bg-white rounded-xl shadow-xl min-h-[400px] mr-5 relative'>
         <div style={{ backgroundImage: `url(${props.imgUrl})`, filter: `${isHovering ? "blur(10px)" : "blur(0px)"}` }} onMouseOver={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} className=' p-3 bg-[url("/images/tabouna.jpg")] bg-cover bg-center w-full h-3/4 rounded-t-xl hover:cursor-pointer'>
 
@@ -27,10 +30,7 @@ function MenuCard(props: MenuCardProps) {
         </div>
         {isHovering && <div className='absolute py-5 px-8 text-white   hover:cursor-pointer' onMouseOver={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}  >
             <h3 className=' font-bold'>ingrediants : </h3>
-            <p className='font-semibold'>1: azaz</p>
-            <p className='font-semibold'>1: azaz</p>
-            <p className='font-semibold'>1: azaz</p>
-            <p className='font-semibold'>1: azaz</p>
+            {props.ingredients && props.ingredients.map(ingredient => <p className='font-bold' >{ingredient}</p>)}
         </div>}
         {countInCart > 0 && <><button className='bg-red-600 text-white hover:scale-105 font-bold ml-auto mr-auto px-3 mt-2 rounded-md' onClick={() => {
             decrement(props.id)
