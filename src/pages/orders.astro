@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import MyOrders from "../components/MyOrders";
+---
+
+<Layout title="my orders page">
+    <Navbar />
+    <MyOrders client:only />
+</Layout>
