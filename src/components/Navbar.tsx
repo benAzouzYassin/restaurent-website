@@ -6,7 +6,7 @@ function Navbar() {
             <div className="flex gap-8  ml-auto pr-10 text-sm  font-semibold">
                 <a href="" className="hover:scale-105">Meilleure vente</a>
                 <a href="" className="hover:scale-105">Notre Menu</a>
-                <a href="" className="hover:scale-105">Contact</a>
+                <a href="" className="hover:scale-105">my orders</a>
             </div>
             <a href="/cart/">  <img src="/images/cart.svg" alt="cart" width="35px" height="35px" className="hover:cursor-pointer hover:scale-110" /></a>
             <button className="bg-[#FF6A55] p-2 rounded-2xl text-white text-xs font-semibold  italic hover:bg-orange-600 ml-[-15px]"> Commandez </button>

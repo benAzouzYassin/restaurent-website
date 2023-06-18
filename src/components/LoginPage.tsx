@@ -18,7 +18,7 @@ interface ApiState {
 
 function cartUrl() {
     const currentUrl = window.location.href.split("/")
-    currentUrl[currentUrl.length - 1] = "cart"
+    currentUrl[currentUrl.length - 2] = "cart"
     const cartUrl = currentUrl.join("/")
     return cartUrl
 
