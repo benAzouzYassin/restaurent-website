@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { orders, addNewProduct, getProductCount, decrement, increment } from '../cartStore';
+import { redirectTo } from '../utils';
 interface MenuCardProps {
     imgUrl: string
     price: number
@@ -32,10 +33,14 @@ function MenuCard(props: MenuCardProps) {
         </div>}
         <div className='flex items-center mt-6 '>
             <h3 className='text-5xl font-sans h-20 text-center italic px-4 font-bold'>{props.productName}</h3>
-            <div className='text-red-600 border-2  border-red-600 rounded-full text-6xl  text-center  hover:bg-red-300 hover:cursor-pointer h-20 w-20 ml-auto mr-4 ' onClick={() => {
-                addNewProduct(props.id, props.productName, props.price, props.imgUrl)
-                setCountInCart(1)
-            }}>{countInCart >= 0 ? "+" : countInCart}</div>
+            <div className='text-red-600 border-2  border-red-600 rounded-full text-6xl  text-center  hover:bg-red-300 hover:cursor-pointer h-20 w-20 ml-auto mr-4  items-center ' style={{ backgroundImage: countInCart > 0 ? "url(/images/cart.svg)" : "", backgroundPosition: "center", backgroundSize: "cover" }} onClick={() => {
+                if (countInCart === 0) {
+                    addNewProduct(props.id, props.productName, props.price, props.imgUrl)
+                    setCountInCart(1)
+                } else {
+                    redirectTo("cart")
+                }
+            }}>{countInCart === 0 && "+"}</div>
         </div>
         <p className='ml-5 text-stone-700 mt-[-20px] text-xl font-semibold'>${props.price} dinars</p>
 

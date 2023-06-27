@@ -20,8 +20,8 @@ function Menu() {
     }, [])
     console.log(products)
     return (
-        <section className=' pl-36 pr-36 bg-[#191919] h-[200vh]'>
-            <div className='w-full grid lg:grid-cols-3  pt-32 z-10 gap-x-32 gap-y-10 '>
+        <section className=' pl-36 pr-36 bg-[#f4e6c0] h-[200vh]'>
+            <div className='w-full grid lg:grid-cols-3  pt-32 z-10 gap-x-12 gap-y-10 '>
                 {
                     products?.length && products.map((product: Product) => <MenuCard rating={product.rating} ingredients={product.ingredients} id={product._id} key={product._id} imgUrl={product.imgLink} price={product.price} productName={product.itemName} />)
                 }

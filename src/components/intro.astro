@@ -5,14 +5,14 @@ import IntroSection from "./Intro";
 
 <div class="intro">
     <div class="curve"></div>
-    <Navbar client:visible />
+    <Navbar client:only />
     <IntroSection client:visible />
 </div>
 <style scoped>
     .intro {
         position: relative;
         height: 100vh;
-        background-image: url("/images/bg-img.png");
+        background-image: url("/images/bg-img.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -21,6 +21,7 @@ import IntroSection from "./Intro";
         position: absolute;
         top: 0%;
         width: 100%;
+        z-index: 0;
         aspect-ratio: 960/540;
         background-repeat: no-repeat;
         background-position: center;
