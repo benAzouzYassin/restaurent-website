@@ -22,28 +22,23 @@ function MenuCard(props: MenuCardProps) {
 
 
 
-    return <div className='flex flex-col bg-white rounded-xl shadow-xl min-h-[400px] mr-5 relative'>
+    return <div className='flex flex-col bg-white rounded-xl shadow-xl min-h-[600px] mr-5 relative'>
         <div style={{ backgroundImage: `url(${props.imgUrl})`, filter: `${isHovering ? "blur(10px)" : "blur(0px)"}` }} onMouseOver={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} className=' p-3 bg-[url("/images/tabouna.jpg")] bg-cover bg-center w-full h-3/4 rounded-t-xl hover:cursor-pointer'>
-
-            <span className='bg-[#f54748] text-white px-3 py-1 font-bold rounded-lg text-sm'>{props.price}</span>
 
         </div>
         {isHovering && <div className='absolute py-5 px-8 text-white   hover:cursor-pointer' onMouseOver={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}  >
             <h3 className=' font-bold'>ingrediants : </h3>
             {props.ingredients && props.ingredients.map(ingredient => <p className='font-bold' >{ingredient}</p>)}
         </div>}
-        {countInCart > 0 && <><button className='bg-red-600 text-white hover:scale-105 font-bold ml-auto mr-auto px-3 mt-2 rounded-md' onClick={() => {
-            decrement(props.id)
-            setCountInCart(count => count - 1)
-        }}>-</button><span className='ml-auto mr-auto font-extrabold'>{countInCart}</span><button className='hover:scale-105 bg-red-600 text-white font-bold ml-auto mr-auto px-3 mb-2 rounded-md' onClick={() => {
-            increment(props.id)
-            setCountInCart(count => count + 1)
-        }} >+</button></>}
+        <div className='flex items-center mt-6 '>
+            <h3 className='text-5xl font-sans h-20 text-center italic px-4 font-bold'>{props.productName}</h3>
+            <div className='text-red-600 border-2  border-red-600 rounded-full text-6xl  text-center  hover:bg-red-300 hover:cursor-pointer h-20 w-20 ml-auto mr-4 ' onClick={() => {
+                addNewProduct(props.id, props.productName, props.price, props.imgUrl)
+                setCountInCart(1)
+            }}>{countInCart >= 0 ? "+" : countInCart}</div>
+        </div>
+        <p className='ml-5 text-stone-700 mt-[-20px] text-xl font-semibold'>${props.price} dinars</p>
 
-        {countInCart < 1 && <button className='m-auto py-1 px-4 bg-black font-semibold hover:scale-105 text-white rounded-md ' onClick={() => {
-            addNewProduct(props.id, props.productName, props.price, props.imgUrl)
-            setCountInCart(1)
-        }}>Commandez</button>}
     </div>
 }
 export default MenuCard

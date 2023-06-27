@@ -50,8 +50,6 @@ function Cart() {
         if (commandErr && !isLoggedIn) {
             redirectTo("login")
 
-        } else {
-            //TODO  handle the other error cases
         }
     }, [commandErr])
 
@@ -103,6 +101,7 @@ function Cart() {
             </>
             }
             {isDone && !commandErr && <p className="text-2xl">done ordering successfully</p>}
+            {commandErr && isLoggedIn && <p> something wrong happened</p>}
         </div>
     )
 }
