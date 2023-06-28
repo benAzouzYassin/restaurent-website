@@ -3,9 +3,42 @@ import Layout from "../layouts/Layout.astro";
 
 import Intro from "../components/intro.astro";
 import AboutUs from "../components/AboutUs";
+import Menu from "../components/Menu";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 ---
 
 <Layout title="Karoui resto">
-	<Intro />
-	<AboutUs />
+	<div class="relative">
+		<Intro />
+		<div class="curve"></div>
+		<AboutUs client:visible />
+
+		<div class="curve bg-[url(/images/second-wave.svg)] z-10 top-[100vh]">
+		</div>
+		<Menu client:only />
+		<div class="curve bg-[url(/images/third-wave.svg)] top-[300vh]"></div>
+		<Contact />
+	</div>
+	<Footer />
 </Layout>
+<style is:global>
+	.curve {
+		position: absolute;
+		top: 0%;
+		width: 100%;
+		z-index: 1;
+		aspect-ratio: 960/540;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		background-image: url("/images/first-wave.svg");
+	}
+	.menu-card-span::before {
+		background-color: white;
+		content: "";
+		height: 6px;
+		flex-grow: 1;
+		border-block: 1px solid;
+	}
+</style>

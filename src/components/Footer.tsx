@@ -1,7 +1,7 @@
 
 function Footer() {
     return (
-        <div className="flex flex-row bg-black h-16 py-4 mt-16 lg:pl-36 lg:pr-36">
+        <div className="flex flex-row bg-black h-16 py-4  lg:pl-36 lg:pr-36">
             <div className="text-white font-semibold mb-4">
                 Follow Us:
             </div>
