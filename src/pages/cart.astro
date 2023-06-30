@@ -1,9 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import Cart from '../components/Cart'
+import Layout from "../layouts/Layout.astro";
+import ProductsCart from "../components/Cart";
 ---
 
 <Layout title="Cart">
-   
-   <Cart client:visible/>
+   <div
+      class="bg-[#191919] h-[100vh] pt-16 bg-[url(/images/shape-6.png)] bg-center"
+   >
+      <ProductsCart client:visible />
+   </div>
 </Layout>

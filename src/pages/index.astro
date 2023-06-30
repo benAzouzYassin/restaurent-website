@@ -9,16 +9,16 @@ import Footer from "../components/Footer";
 ---
 
 <Layout title="Karoui resto">
-	<div class="relative">
+	<div class="relative h-fit">
 		<Intro />
 		<div class="curve"></div>
 		<AboutUs client:visible />
 
-		<div class="curve bg-[url(/images/second-wave.svg)] z-10 top-[100vh]">
+		<div class="curve bg-[url(/images/second-wave.svg)] z-10 top-[1350px]">
 		</div>
 		<Menu client:only />
-		<div class="curve bg-[url(/images/third-wave.svg)] top-[300vh]"></div>
-		<Contact />
+
+		<Contact client:visible />
 	</div>
 	<Footer />
 </Layout>
@@ -33,12 +33,5 @@ import Footer from "../components/Footer";
 		background-position: center;
 		background-size: cover;
 		background-image: url("/images/first-wave.svg");
-	}
-	.menu-card-span::before {
-		background-color: white;
-		content: "";
-		height: 6px;
-		flex-grow: 1;
-		border-block: 1px solid;
 	}
 </style>

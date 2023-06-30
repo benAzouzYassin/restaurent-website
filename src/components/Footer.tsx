@@ -8,12 +8,12 @@ function Footer() {
 
             <div className="text-white flex gap-2 ml-3">
                 <div><img src="/images/icon-facebook.svg" alt="" /></div>
-                resto karoui
+                resto Name
             </div>
 
             <div className="text-white flex gap-2  ml-3">
                 <div><img src="/images/icon-instagram.svg" alt="" /></div>
-                @resto_karoui
+                @resto_Name
             </div>
             <div className="text-white ml-auto"> Made with {"<3"} by <a href="https://benazouzyassine.netlify.app/" className="hover:border-b-[1px]  border-b-white">yassine ben azouz</a></div>
         </div>
