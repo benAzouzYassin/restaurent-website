@@ -2,16 +2,7 @@ import MenuCard from './MenuCard'
 import "../styles.css"
 import { useEffect, useState } from 'react'
 import { baseURL } from "./apiUrl"
-import { variantsRight } from "../utils"
-interface Product {
-    itemName: string
-    isAvailable: boolean
-    price: number
-    rating: number
-    imgLink: string
-    ingredients: string[]
-    _id: string
-}
+import { Product, variantsRight } from "../utils"
 
 
 function Menu() {
@@ -19,7 +10,6 @@ function Menu() {
     useEffect(() => {
         baseURL.get("/items").then(res => setProducts(res.data)).catch(err => console.error(err))
     }, [])
-    console.log(products)
     return (
         <section className=' flex flex-col  h-[150vh]  w-full bg-[url(/images/shape-5.png)] pt-36    bg-[#161718] relative'>
             <div className='w-full grid lg:grid-cols-2  pt-32 z-10 gap-x-12 gap-y-10 pl-36 pr-32 '>

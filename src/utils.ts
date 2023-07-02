@@ -1,7 +1,16 @@
+export type Product = {
+  itemName: string;
+  isAvailable: boolean;
+  price: number;
+  rating: number;
+  imgLink: string;
+  ingredients: string[];
+  _id: string;
+};
+
 export function redirectTo(destination: string) {
   const currentUrl = window.location.href.split("/");
-  currentUrl[currentUrl.length - 1] = destination;
-  const newUrl = currentUrl.join("/");
+  const newUrl = currentUrl[0] + currentUrl[1] + destination;
   window.location.href = newUrl;
 }
 export const visibleAnimation = {

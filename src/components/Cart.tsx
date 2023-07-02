@@ -101,7 +101,7 @@ function Cart() {
             }
             {isDone && !commandErr && <p className="text-2xl">done ordering successfully</p>}
             {commandErr && isLoggedIn && <p> something wrong happened</p>}
-            {ordered < 1 && <div className=" text-8xl  text-center mt-[20vh] text-stone-400">No items was found</div>}
+            {!savedOrders?.length && <div className=" text-8xl  text-center mt-[20vh] text-stone-400">No items was found </div>}
         </div>
     )
 }

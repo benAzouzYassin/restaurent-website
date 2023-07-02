@@ -1,0 +1,12 @@
+---
+import MenuComp from "../components/MenuComp";
+import Navbar from "../components/Navbar";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="menu">
+    <div class="bg-[#171717]">
+        <Navbar />
+        <MenuComp client:only />
+    </div>
+</Layout>
