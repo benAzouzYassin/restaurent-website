@@ -23,6 +23,7 @@ function Menu() {
     }
     const tesProd: Product | null = products ? products[0] : null
 
+    //TODO make the items come from the api
     return <div className="h-[100vh] bg-[url(/images/shape-5.png)] relative " >
         <div className=" gap-y-5 p-10 min-h-[50vh] grid-cols-2 grid  w-[99.5vw] overflow-hidden lg:pl-56 lg:pr-56  align-center gap-x-10 pt-20  ">
             {tesProd &&

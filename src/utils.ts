@@ -8,6 +8,21 @@ export type Product = {
   _id: string;
 };
 
+export interface User {
+  _id: string;
+  name: string;
+  isAdmin: boolean;
+  phone: number;
+}
+export interface Order {
+  _id: string;
+  item: Product;
+  orderState: string;
+  user: User;
+  countInCart: string;
+  createdAt: string;
+}
+
 export function redirectTo(destination: string) {
   const currentUrl = window.location.href.split("/");
   const newUrl = currentUrl[0] + currentUrl[1] + destination;

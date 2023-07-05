@@ -3,7 +3,7 @@ function Navbar() {
 
 
     return (
-        <nav>
+        <nav >
 
             <div className="flex py-4 items-center text-white lg:px-36 gap-3 shadow-2xl   relative z-10">
                 <p className="text-5xl mt-[-10px] text-center font-bold font-['roboto'] italic">Resto</p>

@@ -9,13 +9,16 @@ function MyOrders() {
 
     useEffect(() => {
         baseURL.get("/userOrders", { headers: { Authorization: `Bearer ${token}` } })
-            .then(res => setUserOrders(res.data))
+            .then(res => {
+                console.log(res.data)
+                setUserOrders(res.data)
+            })
             .catch(err => console.error(err))
     }, [])
     console.log(userOrders)
-    return (<div className="lg:pl-36 lg:pr-36 mt-16 flex gap-4 flex-col">{userOrders.length > 0 &&
+    return (<div className="lg:pl-36 lg:pr-36 pt-16 flex gap-4 flex-col ] bg-[url(/images/shape-6.png)] min-h-[100vh] bg-center">{userOrders.length > 0 &&
         userOrders.map(
-            (order: any) => <OrderItem key={order._id} price={order.item.price} img={order.item.imgLink} name={order.item.itemName} count={order.countInCart} orderState={order.orderState} />
+            (order: any) => <OrderItem key={order._id} price={order.item.price} ingredients={order.item.ingredients} img={order.item.imgLink} name={order.item.itemName} count={order.countInCart} orderState={order.orderState} />
         )
     }
     </div>)
