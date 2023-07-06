@@ -14,27 +14,26 @@ interface FormDataType {
 export default function AddItem() {
     const { register, formState: { errors }, setError, handleSubmit, watch } = useForm<FormDataType>()
 
-    return (<form className="flex flex-col pt-10 gap-5" encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
-        <h1>add new item to the store</h1>
-        <input className="p-4 rounded-xl" type="text" placeholder="itemName" {...register("itemName", { required: true, })} />
+    return (<form className="flex flex-col pt-10 gap-5 lg:pr-56 lg:pl-56 mt-24" encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
+        <input className="p-4 rounded-xl bg-black text-white placeholder:text-stone-400" type="text" placeholder="itemName" {...register("itemName", { required: true, })} />
         {errors.itemName?.type && <p className="text-red-500">unvalid item name</p>}
-        <select {...register("isAvailable", { required: true })} className="p-4 rounded-xl">
+        <select {...register("isAvailable", { required: true })} className="p-4 rounded-xl placeholder:text-stone-400 bg-black text-white ">
             <option value="true">available</option>
             <option value="false">non available</option>
         </select>
-        <input className="p-4 rounded-xl" type="text" placeholder="price" {...register("price", { pattern: /^-?\d+(\.\d+)?$/, required: true })} />
+        <input className="p-4 rounded-xl bg-black text-white placeholder:text-stone-400" type="text" placeholder="price" {...register("price", { pattern: /^-?\d+(\.\d+)?$/, required: true })} />
         {errors.price?.type && <p className="text-red-500">unvalid price</p>}
 
-        <input className="p-4 rounded-xl" type="number" placeholder="rating" {...register("rating", { pattern: /^[1-5]$/, required: true })} />
+        <input className="p-4 rounded-xl bg-black text-white placeholder:text-stone-400" type="number" placeholder="rating" {...register("rating", { pattern: /^[1-5]$/, required: true })} />
         {errors.rating && <p className="text-red-500">unvalide rating</p>}
 
-        <input className="p-4 rounded-xl" type="text" placeholder="ingredients" {...register("ingredients", { required: true })} />
+        <input className="p-4 rounded-xl bg-black text-white placeholder:text-stone-400" type="text" placeholder="ingredients" {...register("ingredients", { required: true })} />
         {errors.ingredients && <p className="text-red-500">unvalide ingredients</p>}
 
-        <input className="p-4 rounded-xl" type="file" {...register("img", { required: true })} formEncType="multipart /form-data" />
+        <input className=" text-center  text-stone-400  border-2 border-dashed border-blue-800 w-full h-56 file:hidden bg-black  rounded-xl hover:cursor-pointer  text-2xl  placeholder:text-stone-400  " type="file" {...register("img", { required: true })} formEncType="multipart /form-data" />
         {errors.img?.type && <p className="text-red-500">unvalide image</p>}
 
-        <button className="bg-green-500 w-fit ml-auto mr-auto p-3 rounded-xl text-white">Submit</button>
+        <button className="bg-green-500 w-fit ml-auto mr-auto p-3 rounded-xl text-white ">Submit</button>
     </form>)
 }
 

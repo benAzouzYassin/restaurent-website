@@ -10,7 +10,7 @@ function Navbar() {
                 <div className="flex gap-10  pr-10 text-lg  font-medium font-sans ml-16  ">
                     <a href="/" className="hover:scale-105"> Home Page</a>
                     <a href="/menu" className="hover:scale-105">Notre Menu</a>
-                    <a href="/orders" className="hover:scale-105">my orders</a>
+                    <a href="/orders" className="hover:scale-105">My orders</a>
                 </div>
                 <a href="/cart/" className="ml-auto scale-125 mr-5"> <img src="/images/cart.svg" alt="cart" width="35px" height="35px" className="hover:cursor-pointer hover:scale-110 z-10" /></a>
             </div>

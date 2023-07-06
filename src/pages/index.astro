@@ -6,6 +6,8 @@ import AboutUs from "../components/AboutUs";
 import Menu from "../components/Menu";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+//TODO FIX THE CURVES AND MAKE THE WEBSITE RESPONSIVE
+//TODO CLEAN THE PROJECT FILES
 ---
 
 <Layout title="Karoui resto">
@@ -14,14 +16,14 @@ import Footer from "../components/Footer";
 		<div class="curve"></div>
 		<AboutUs client:visible />
 
-		<div class="curve bg-[url(/images/second-wave.svg)] z-10 top-[1350px]">
-		</div>
-		<Menu client:only />
-
-		<Contact client:visible />
+		<!-- <div class="curve bg-[url(/images/second-wave.svg)] z-10 top-[160rem]"> -->
 	</div>
-	<Footer />
+	<Menu client:only />
+
+	<Contact client:visible />
 </Layout>
+<Footer />
+
 <style is:global>
 	.curve {
 		position: absolute;

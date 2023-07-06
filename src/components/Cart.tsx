@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
 import type { Order } from "../cartStore"
 import { baseURL } from "./apiUrl"
-import Navbar from "./Navbar"
 import CartItem from "./CartItem"
 import { redirectTo } from "../utils"
 
@@ -42,13 +41,13 @@ function Cart() {
         if (isDone && !commandErr) {
             setSavedOrders([])
             localStorage.setItem("orders", "[]")
-            redirectTo("myOrders")
+            redirectTo("/orders")
         }
     }, [isDone])
 
     useEffect(() => {
         if (commandErr && !isLoggedIn) {
-            redirectTo("login")
+            redirectTo("/../login")
 
         }
     }, [commandErr])

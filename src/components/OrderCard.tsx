@@ -2,23 +2,26 @@ import { useCallback, useMemo } from "react";
 import type { Order } from "../utils";
 import { baseURL } from "./apiUrl";
 
+interface Props extends Order {
+    allOrders: Order[]
+    updateOrders: () => void
+}
 
-export default function OrderCard(props: Order) {
+export default function OrderCard(props: Props) {
     const token = useMemo(() => localStorage.getItem("token"), [])
 
     const cancelOrder = useCallback((orderId: string) => {
         baseURL.patch("/cancelOrder", { orderId: orderId }, { headers: { Authorization: `Bearer ${token}` } })
-            .then(res => console.log(res.data))
+            .then(res => props.updateOrders())
             .catch(err => console.error(err))
-
     }, [])
 
     const confirmOrder = useCallback((orderId: string) => {
         baseURL.patch("/confirmOrder", { orderId: orderId }, { headers: { Authorization: `Bearer ${token}` } })
-            .then(res => console.log(res.data))
+            .then(res => props.updateOrders())
             .catch(err => console.error(err))
-
     }, [])
+
 
     return <div>
 
@@ -32,7 +35,7 @@ export default function OrderCard(props: Order) {
                     <p>createdAt {props.createdAt.substring(0, 10)}</p>
                     <p className="mt-2 text-2xl italic font-semibold border-b-[1px] border-white w-fit ">Total Price :<span className="font-normal"> {props.item.price * parseInt(props.countInCart)}</span> </p>
                     <div className="flex w-full justify-center">
-                        {props.orderState != "done" && <button className="bg-green-600 hover:cursor-pointer mr-2 hover:bg-green-700  py-2 px-4 rounded-xl " onClick={() => confirmOrder(props._id)}>confirm </button>}
+                        {props.orderState != "done" && <button className="bg-green-600 hover:cursor-pointer mr-2 hover:bg-green-700  py-2 px-4 rounded-xl " onClick={() => confirmOrder(props._id)}>confirm  </button>}
                         {props.orderState != "canceled" && <button className="bg-red-600 hover:cursor-pointer ml-2 hover:bg-red-700  py-2 px-4 rounded-xl " onClick={() => cancelOrder(props._id)}>cancel </button>}
                     </div>
                 </div>
