@@ -10,7 +10,7 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
+		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -23,31 +23,35 @@ const { title } = Astro.props;
 <style is:global>
 	:root {
 		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#da62c4 30%,
+			white 60%
+		);
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #FEF5F6;
-		
+		background-color: #fef5f6;
 	}
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
-}
+	/* Scrollbar */
+	::-webkit-scrollbar {
+		width: 0.6vw; /* Adjust the width as needed */
+	}
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Use your desired background color */
-}
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #d9d6d6; /* Use your desired background color */
+	}
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; /* Use your desired handle color */
-  border-radius: 4px; /* Adjust the border-radius as needed */
-}
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #888; /* Use your desired handle color */
+		border-radius: 4px; /* Adjust the border-radius as needed */
+	}
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Use your desired handle color on hover */
-}
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #555; /* Use your desired handle color on hover */
+	}
 </style>

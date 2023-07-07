@@ -3,7 +3,9 @@ import Navbar from "./Navbar";
 import IntroSection from "./Intro";
 ---
 
-<div class="h-[100vh] bg-[url('/images/bg-img.jpg')]">
-    <Navbar client:only />
+<div
+    class="h-[100vh] bg-[url('/images/bg-img.jpg')] bg-center bg-no-repeat bg-cover"
+>
+    <Navbar client:visible />
     <IntroSection client:visible />
 </div>
