@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="menu">
     <div class="bg-[#171717]">
-        <Navbar />
+        <Navbar client:visible />
         <MenuComp client:only />
     </div>
 </Layout>

@@ -10,7 +10,7 @@ interface FormDataType {
     ingredients: string
 }
 
-
+//TODO make the form empty when the form is submitted
 export default function AddItem() {
     const { register, formState: { errors }, setError, handleSubmit, watch } = useForm<FormDataType>()
 
