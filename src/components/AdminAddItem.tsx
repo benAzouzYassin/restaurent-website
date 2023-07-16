@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import { baseURL } from "./apiUrl"
+import { useCallback } from "react"
 
 interface FormDataType {
     itemName: string
@@ -10,9 +11,34 @@ interface FormDataType {
     ingredients: string
 }
 
-//TODO make the form empty when the form is submitted
 export default function AddItem() {
-    const { register, formState: { errors }, setError, handleSubmit, watch } = useForm<FormDataType>()
+    const { register, formState: { errors }, setError, handleSubmit, reset } = useForm<FormDataType>()
+
+    const onSubmit = useCallback(async (data: FormDataType) => {
+        const token = localStorage.getItem("token")
+        try {
+            const response = await baseURL.post("/getImgLink", { img: data.img[0] }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            const imgLink = response.data
+            baseURL.post("/saveItem", { ...data, imgLink: imgLink }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }).then(res => reset())
+
+
+        } catch (error) {
+            console.error(error)
+        }
+    }, [])
+
+
+
+
 
     return (<form className="flex flex-col pt-10 gap-5 lg:pr-56 lg:pl-56 mt-24" encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
         <input className="p-4 rounded-xl bg-black text-white placeholder:text-stone-400" type="text" placeholder="itemName" {...register("itemName", { required: true, })} />
@@ -33,28 +59,8 @@ export default function AddItem() {
         <input className=" text-center  text-stone-400  border-2 border-dashed border-blue-800 w-full h-56 file:hidden bg-black  rounded-xl hover:cursor-pointer  text-2xl  placeholder:text-stone-400  " type="file" {...register("img", { required: true })} formEncType="multipart /form-data" />
         {errors.img?.type && <p className="text-red-500">unvalide image</p>}
 
-        <button className="bg-green-500 w-fit ml-auto mr-auto p-3 rounded-xl text-white ">Submit</button>
+        <button className="bg-green-500 w-fit ml-auto mr-auto p-3 rounded-xl text-white " >Submit</button>
     </form>)
 }
 
-async function onSubmit(data: FormDataType) {
-    const token = localStorage.getItem("token")
-    try {
-        const response = await baseURL.post("/getImgLink", { img: data.img[0] }, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "multipart/form-data",
-            },
-        })
-        const imgLink = response.data
-        baseURL.post("/saveItem", { ...data, imgLink: imgLink }, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        }).then(res => console.log(res))
 
-
-    } catch (error) {
-        console.error(error)
-    }
-}

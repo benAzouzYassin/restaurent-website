@@ -6,6 +6,9 @@ import { redirectTo } from "../utils"
 
 function Cart() {
 
+
+
+
     const [savedOrders, setSavedOrders] = useState<Order[] | null>()
     const [commandErr, setCommandErr] = useState<boolean | null>(false)
     const [ordered, setOrdered] = useState(0)
@@ -15,8 +18,9 @@ function Cart() {
 
 
     useEffect(() => {
-        const savedOrders = JSON.parse(localStorage.getItem("orders") ?? "[]")
-        setSavedOrders(savedOrders)
+        const orders: Order[] = JSON.parse(localStorage.getItem("orders") ?? "[]")
+        const filteredOrders = orders.filter(order => order.countInCart > 0)
+        setSavedOrders(filteredOrders)
         const token = localStorage.getItem("token") ?? ""
         baseURL.post("/isLoggedIn", { token: token })
             .then(res => {
@@ -88,7 +92,7 @@ function Cart() {
     savedOrders?.forEach(order => total += order.price * order.countInCart)
     return (
         <div className="">
-            <div className="flex flex-col gap-5 lg:pr-36 lg:pl-36 pt-10 ">
+            <div className="flex flex-col gap-5 lg:pr-36 lg:pl-36 pt-10  px-1">
                 {savedOrders?.map(item => <CartItem key={item.id} item={item} updatedCartState={getUpdatedCartState} />)}
             </div >
             {total > 0 && <>

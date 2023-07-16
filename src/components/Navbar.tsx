@@ -18,7 +18,7 @@ function Navbar() {
         <nav >
 
             <div className=" flex py-4 items-center text-white lg:px-36 gap-3 pl-5 pr-5 shadow-2xl   relative z-10 overflow-hidden">
-                <p className="text-5xl mt-[-10px] text-center font-bold font-['roboto'] italic">Resto</p>
+                <p className="lg:text-5xl text-4xl lg:mt-[-10px] text-center font-bold font-['roboto'] italic">Resto</p>
                 <div className="lg:flex gap-10  pr-10 text-lg hidden  font-medium font-sans ml-16  ">
                     <a href="/" className="hover:scale-105"> Home Page</a>
                     <a href="/menu" className="hover:scale-105">Notre Menu</a>

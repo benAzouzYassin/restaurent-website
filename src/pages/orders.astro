@@ -5,8 +5,8 @@ import MyOrders from "../components/MyOrders";
 ---
 
 <Layout title="my orders page">
-    <div class="bg-[#121212]">
-        <Navbar />
+    <div class="bg-[#121212] px-3">
+        <Navbar client:visible />
         <MyOrders client:only />
     </div>
 </Layout>

@@ -6,33 +6,33 @@ import AboutUs from "../components/AboutUs";
 import Menu from "../components/Menu";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-//TODO make the menu page responsive then the others
+//TODO fix the curves
 ---
 
 <Layout title="Karoui resto">
 	<div class="relative h-fit">
 		<Intro />
-		<!-- <div class="curve"></div> -->
-		<AboutUs client:visible />
-
-		<!-- <div class="curve bg-[url(/images/second-wave.svg)] z-10 top-[160rem]"> -->
 	</div>
+	<div class=""></div>
+
+	<AboutUs client:visible />
+
 	<Menu client:only />
 
 	<Contact client:visible />
-</Layout>
-<Footer />
 
-<style is:global>
-	.curve {
-		position: absolute;
-		top: 0%;
-		width: 100%;
-		z-index: 1;
-		aspect-ratio: 960/540;
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-		background-image: url("/images/first-wave.svg");
-	}
-</style>
+	<Footer />
+
+	<style is:global>
+		.curve {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			background-image: url("/images/first-wave.svg");
+		}
+	</style>
+</Layout>

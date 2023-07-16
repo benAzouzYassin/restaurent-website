@@ -31,7 +31,7 @@ export default function OrderCard(props: Props) {
                 <div className="flex flex-col w-3/4">
                     <h1 className="text-5xl text-amber-100 italic font-semibold  w-full">{props.item.itemName} <span className="text-xl "  >{props.orderState}</span></h1>
                     <p className="mt-1"><span className="text-xl font-semibold">User : </span> {props.user.name}</p>
-                    <p className="mt-1">Phone numbre {props.user.phone}</p>
+                    <p className="mt-1">Phone : {props.user.phone}</p>
                     <p>createdAt {props.createdAt.substring(0, 10)}</p>
                     <p className="mt-2 text-2xl italic font-semibold border-b-[1px] border-white w-fit ">Total Price :<span className="font-normal"> {props.item.price * parseInt(props.countInCart)}</span> </p>
                     <div className="flex w-full justify-center">

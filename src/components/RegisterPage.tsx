@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import axios, { AxiosError } from "axios";
 import { useState } from "react";
 import { } from "astro"
+import { baseURL } from "./apiUrl";
 
 interface FormData {
     email: string
@@ -29,7 +29,7 @@ function RegisterPage() {
 
     const formSubmit = async (data: FormData) => {
         try {
-            const response = await axios.post("http://localhost:5500/register", { "name": data.email, "password": data.password, "phone": data.phone })
+            const response = await baseURL.post("/register", { "name": data.email, "password": data.password, "phone": data.phone })
             if (response && response.data.success == true) {
                 localStorage.setItem("token", response.data.token)
                 setIsError({ status: false })
@@ -47,8 +47,7 @@ function RegisterPage() {
 
 
     return <div className="flex w-full flex-row  h-[100vh]">
-        <div className="w-[55%] bg-[url(/images/shop-img.svg)] bg-no-repeat "> </div>
-        <div className="flex flex-col bg-[#171717] border-l-2 h-full   border-solid pt-56 pl-32  w-[45%] pr-32  bg-[url(/images/shape-5.png)]">
+        <div className="flex flex-col bg-[#171717] h-full  bg-[url(/images/shape-5.png)] pt-20 lg:pt-56 lg:px-96  w-[100%]  px-10 ">
             <h1 className="text-6xl font-semibold mb-5  text-white">Register</h1>
             <form className="flex flex-col gap-8 mt-5" onSubmit={handleSubmit(formSubmit)} autoComplete="off">
                 < input placeholder="Your Email" type="email" className="bg-stone-100 font-semibold placeholder:font-normal border-2 shadow-lg border-gray-700 text-xl p-4 rounded-3xl focus-within:outline-0 placeholder:text-gray-800" {...register("email", { required: true, minLength: 5, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />

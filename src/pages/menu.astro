@@ -1,5 +1,5 @@
 ---
-import MenuComp from "../components/MenuComp";
+import FullMenu from "../components/FullMenu";
 import Navbar from "../components/Navbar";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -7,6 +7,6 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="menu">
     <div class="bg-[#171717]">
         <Navbar client:visible />
-        <MenuComp client:only />
+        <FullMenu client:only />
     </div>
 </Layout>

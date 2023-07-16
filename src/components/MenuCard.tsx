@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { orders, addNewProduct } from '../cartStore';
+import { orders, } from '../cartStore';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "react-intersection-observer"
 interface MenuCardProps {
@@ -13,6 +13,7 @@ interface MenuCardProps {
 }
 function MenuCard(props: MenuCardProps) {
 
+    console.log("menu card render")
 
 
     const animation = useAnimation()
@@ -36,7 +37,7 @@ function MenuCard(props: MenuCardProps) {
 
 
     return <motion.div className=' flex gap-5  rounded-xl shadow-2xl min-h-[100px] px-2 py-2 lg:mr-5 relative z-10  bg-[#1f1f1f] hover:bg-[#191919] hover:cursor-pointer' ref={ref} animate={animation} variants={props.animationVariant} >
-        <div className='lg:w-[15%] w-1/3 rounded-xl bg-cover hover:blur-sm hover:cursor-pointer hover:bg-center  transition-all' style={{ backgroundImage: `url(${props.imgUrl})` }}></div>
+        <div className='lg:w-[15%] w-1/3 rounded-xl bg-cover hover:blur-sm hover:cursor-pointer bg-center  transition-all ' style={{ backgroundImage: `url(${props.imgUrl})` }}></div>
         <div className='w-2/3 flex flex-col '>
             <div className='flex items-center'>
                 <h4 className=' text-2xl mt-2   text-left font-serif relative  font-bold text-amber-100'>{props.productName}</h4>

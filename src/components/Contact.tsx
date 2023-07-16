@@ -2,7 +2,7 @@ import { motion, useAnimation } from "framer-motion"
 import { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 function Contact() {
-    const { ref, inView } = useInView({ threshold: 0.5 })
+    const { ref, inView } = useInView({ threshold: 0.4 })
     const animation = useAnimation()
     useEffect(() => {
         if (inView) {
@@ -14,7 +14,7 @@ function Contact() {
     return (
         <div className="lg:py-36  h-fit min-h-[900px] bg-[#f5e7c1] grid lg:grid-cols-2 gap-4 pt-20 bg-[url(/images/shape-1.png)] bg-no-repeat bg-left-bottom overflow-hidden pb-10 lg:pb-0" ref={ref}>
 
-            <motion.div initial={{ display: "none", }} variants={{ "hidden": { opacity: 0, x: - 100, }, "visible": { display: "block", opacity: 1, x: 0 } }} transition={{ duration: 0.3 }} animate={animation} className=" w-full h-2/3 lg:py-5 px-5  lg:scale-110 lg:ml-36  mt-10" >
+            <motion.div initial={{ display: "none", }} variants={{ "hidden": { opacity: 0, x: - 100, }, "visible": { display: "block", opacity: 1, x: 0 } }} transition={{ duration: 0.3 }} animate={animation} className=" w-full h-2/3 lg:py-5 px-2  lg:scale-110 lg:ml-36  mt-10" >
                 <h2 className="text-6xl font-serif font-semibold italic text-red-500 ">Contact Us anytime<br /> for fast delivery</h2>
                 <p className="font-bold text-2xl mt-10 italic ">order by phone </p>
                 <p className="text-red-500 font-bold text-3xl">+216 12 123 456</p>

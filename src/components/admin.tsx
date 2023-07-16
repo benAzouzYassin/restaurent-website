@@ -1,10 +1,10 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import AddItem from "./AdminAddItem"
 import PendingOrders from "./PendingOrders"
 import DoneOrders from "./DoneOrders"
 import CanceledOrders from "./CanceledOrders"
 import { AdminNav } from "./AdminNav"
+import { baseURL } from "./apiUrl"
 export type AdminPages = "addItem" | "pendingOrders" | "canceledOrders" | "doneOrders" | "main"
 
 function AdminPage() {
@@ -17,7 +17,7 @@ function AdminPage() {
     }
     useEffect(() => {
         const token = localStorage.getItem("token")
-        axios.post("http://localhost:5500/admin", {}, { headers: { Authorization: `Bearer ${token}` } })
+        baseURL.post("/admin", {}, { headers: { Authorization: `Bearer ${token}` } })
             .then(data => setIsAdmin(true))
             .catch(err => setIsAdmin(false))
     }, [])
