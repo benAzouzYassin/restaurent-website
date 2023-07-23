@@ -101,7 +101,7 @@ function Card(props: CardProps) {
                 <div className='flex items-center'>
                     <h4 className=' text-2xl mt-2   text-left font-serif relative  font-bold text-amber-100'>{props.itemName}</h4>
                     <div className=' w-auto  border-solid  border-y-[1px] lg:block hidden ml-4 mr-4 border-[#FFF0F0] h-[5px] mt-3 flex-grow' ></div>
-                    <p className='text-amber-100  ml-1 mt-2  lg:ml-auto text-xl text-[Forum, cursive]'>{props.price}.00$</p>
+                    <p className='text-amber-100  ml-1 mt-2  lg:ml-auto text-xl text-[Forum, cursive]'>{props.price}$</p>
                 </div>
                 <p className='text-stone-300 mt-2 mb-2 '><span className='text-xl font-semibold italic'>Ingredients</span> : {props.ingredients.join(" ")} </p>
 

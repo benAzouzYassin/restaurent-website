@@ -16,7 +16,7 @@ function MyOrders() {
             .catch(err => console.error(err))
     }, [])
     return (<div className="lg:pl-36 lg:pr-36 pt-16 flex gap-4 flex-col ] bg-[url(/images/shape-6.png)] min-h-[100vh] bg-center">
-        <h1 className="text-6xl text-white italic">Your orders : </h1>
+        {userOrders.length > 0 ? <h1 className="text-6xl text-white italic">Your orders : </h1> : <h1 className="text-8xl italic text-center mt-[20vh] text-stone-400 ">No Orders</h1>}
         {userOrders.length > 0 &&
             userOrders.map(
                 (order: any) => <OrderItem key={order._id} price={order.item.price} ingredients={order.item.ingredients} img={order.item.imgLink} name={order.item.itemName} count={order.countInCart} orderState={order.orderState} />

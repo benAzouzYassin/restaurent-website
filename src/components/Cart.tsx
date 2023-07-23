@@ -3,6 +3,7 @@ import type { Order } from "../cartStore"
 import { baseURL } from "./apiUrl"
 import CartItem from "./CartItem"
 import { redirectTo } from "../utils"
+import Navbar from "./Navbar"
 
 function Cart() {
 
@@ -92,12 +93,13 @@ function Cart() {
     savedOrders?.forEach(order => total += order.price * order.countInCart)
     return (
         <div className="">
+            <Navbar />
             <div className="flex flex-col gap-5 lg:pr-36 lg:pl-36 pt-10  px-1">
                 {savedOrders?.map(item => <CartItem key={item.id} item={item} updatedCartState={getUpdatedCartState} />)}
             </div >
             {total > 0 && <>
                 <p className="mt-10 text-3xl font-bold w-full text-right  flex  flex-col lg:pr-36 lg:pl-36 text-white italic font-mono">
-                    TOTALE : {total + " "}TND
+                    TOTAL : {total + " "}TND
                     {!isLoading && <button className="text-white  p-2 rounded-md text-lg font-semibold  bg-orange-500 hover:bg-orange-600 mt-10 font-sans " onClick={commandAll}>commander</button>}
                 </p>
             </>

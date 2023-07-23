@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
+import { redirectTo } from "../utils";
 
 
 interface FormData {
@@ -16,13 +17,7 @@ interface ApiState {
     error?: string
 }
 
-function cartUrl() {
-    const currentUrl = window.location.href.split("/")
-    currentUrl[currentUrl.length - 2] = "cart"
-    const cartUrl = currentUrl.join("/")
-    return cartUrl
 
-}
 
 function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
@@ -35,7 +30,7 @@ function Login() {
                 console.log(response)
                 setApiState({ isSuccess: true, isError: false, isLoading: false, data: response.data })
                 //  redirect user
-                window.location.replace(cartUrl())
+                redirectTo("/cart")
             } else if (response.status == 401) {
                 console.log(response)
                 setApiState({ isSuccess: false, isError: true, isLoading: false, error: "non valid username or password" })
@@ -55,12 +50,15 @@ function Login() {
         <div className="flex flex-col bg-[#171717] h-full bg-[url(/images/shape-5.png)] pt-20 lg:pt-56 lg:px-96  w-[100%]  px-10 ">
             <h1 className="text-6xl font-semibold mb-5  text-white">Login</h1>
             <form className="flex flex-col gap-8 mt-5" onSubmit={handleSubmit(formSubmit)} autoComplete="off">
-                < input placeholder="Your Email" type="email" className="bg-[#d9e3ec] font-semibold placeholder:font-normal border-2 shadow-lg border-gray-700 text-xl p-4 rounded-3xl focus-within:outline-0 placeholder:text-gray-800" {...register("email", { required: true, minLength: 5, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />
+                < input placeholder="Your Email" type="email" className="focus:bg-[#d9e3ec] font-semibold placeholder:font-normal border-2 shadow-lg border-gray-700 text-xl p-4 rounded-3xl focus-within:outline-0 placeholder:text-gray-800" {...register("email", { required: true, minLength: 5, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })} />
                 {errors.email?.type && <p className="text-red-600 mt-[-25px]">Non valid Email </p>}
-                < input placeholder="your password" type="password" className="bg-[#d9e3ec] shadow-2xl font-semibold placeholder:font-normal border-2  border-gray-700 text-xl p-4 rounded-3xl focus-within:outline-0 placeholder:text-gray-800" {...register("password", { required: true, minLength: 8, maxLength: 20 })} />
+                < input placeholder="your password" type="password" className="focus:bg-[#d9e3ec] shadow-2xl font-semibold placeholder:font-normal border-2  border-gray-700 text-xl p-4 rounded-3xl focus-within:outline-0 placeholder:text-gray-800" {...register("password", { required: true, minLength: 8, maxLength: 20 })} />
+
                 {errors.password?.type && <p className="text-red-600 mt-[-20px]">Non valid password</p>}
                 {apiState.isError && <p className="text-red-600 font-bold">{apiState.error}</p>}
                 <button className="bg-white text-2xl  p-3 rounded-full  hover:bg-stone-200">Login </button>
+                <a href="/register" className="text-white text-2xl underline mt-[-15px] hover:cursor-pointer hover:text-stone-400  underline-offset-4 italic">Create new account ?</a>
+
             </form>
         </div>
     </div>
