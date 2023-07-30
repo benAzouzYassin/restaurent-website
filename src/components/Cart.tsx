@@ -99,8 +99,8 @@ function Cart() {
             </div >
             {total > 0 && <>
                 <p className="mt-10 text-3xl font-bold w-full text-right  flex  flex-col lg:pr-36 lg:pl-36 text-white italic font-mono">
-                    TOTAL : {total + " "}TND
-                    {!isLoading && <button className="text-white  p-2 rounded-md text-lg font-semibold  bg-orange-500 hover:bg-orange-600 mt-10 font-sans " onClick={commandAll}>commander</button>}
+                    TOTAL : {total + " "}$
+                    {!isLoading && <button className="text-white  p-2 rounded-md text-lg font-semibold  bg-orange-500 hover:bg-orange-600 mt-10 font-sans " onClick={commandAll}>Order</button>}
                 </p>
             </>
             }
