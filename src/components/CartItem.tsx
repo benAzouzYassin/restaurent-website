@@ -46,7 +46,7 @@ function CartItem(props: CartItemProps) {
                 <h2 className="lg:ml-10 ml-2 lg:text-3xl text-2xl font-bold ">{item.product} <span className="text-xs mt-[-10px]">x{item.countInCart}</span></h2>
                 <button onClick={() => setItemCount(0)} className="  items-center bottom-0 lg:mb-2 lg:ml-10 bg-orange-400 px-2 py-1 gap-1 hover:bg-orange-500 text-white font-medium rounded-md absolute lg:flex hidden">
                     <img width="20" height="20" src="https://img.icons8.com/ios/100/delete-forever--v1.png" alt="delete-forever--v1" />
-                    supprimer
+                    delete
                 </button>
                 <div className="ml-auto lg:mr-10 mt-auto mb-2   flex flex-col gap-3 h-full lg:h-auto">
                     <p className="  font-medium drop-shadow-xl ml-auto mb-auto lg:text-3xl text-xl mr-2 ">{item.price * itemCount}$</p>
