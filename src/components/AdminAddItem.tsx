@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import { baseURL } from "./apiUrl"
 import { useCallback } from "react"
+import axios from "axios"
 
 interface FormDataType {
     itemName: string
@@ -17,13 +18,15 @@ export default function AddItem() {
     const onSubmit = useCallback(async (data: FormDataType) => {
         const token = localStorage.getItem("token")
         try {
-            const response = await baseURL.post("/getImgLink", { img: data.img[0] }, {
+
+            const formData = new FormData()
+            formData.append("image", data.img[0])
+            const response = await axios.post("https://discord.com/api/v9/channels/917159893042094100/messages", formData, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
+                    Authorization: "NjczMTc1MTg1Nzg0MDQ1NjAz.Gd2Hbr.3FF8tDH6pfywFZfIn4cxmBgIR8tmUoCWQ8iC8Y"
                 },
             })
-            const imgLink = response.data
+            const imgLink = response.data.attachments[0].url
             baseURL.post("/saveItem", { ...data, imgLink: imgLink }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
