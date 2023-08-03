@@ -21,7 +21,7 @@ function Menu() {
                     }
                 </div>
                 <p className='text-white font-normal scale-125 ml-auto mr-auto mt-10 '>Open daily from <span className='text-sm font-medium text-amber-100'>7:00 pm</span> to <span className='text-sm font-medium text-amber-100'>9:00 pm</span> </p>
-                <button className="mt-10 px-16  hover:text-black transition-colors py-4 text-amber-100 border-2  border-amber-100 ml-auto mr-auto bg-[#161718] font-medium text-md hover:cursor-pointer z-10   before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-amber-100 before:transition-transform before:duration-300 before:content-[''] before:hover:scale-x-100 relative z-50" onClick={() => redirectTo("/menu")}>View all menu</button>
+                <button className="mt-10 px-16  hover:text-black transition-colors py-4 text-amber-100 border-2  border-amber-100 ml-auto mr-auto bg-[#161718] font-medium text-md hover:cursor-pointer    before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-amber-100 before:transition-transform before:duration-300 before:content-[''] before:hover:scale-x-100 relative z-[70]" onClick={() => redirectTo("/menu")}>View all menu</button>
 
             </div>
             <svg className='absolute bottom-[0%] z-50 ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

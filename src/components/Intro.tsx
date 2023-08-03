@@ -1,23 +1,47 @@
-import { motion } from "framer-motion"
-import { redirectTo } from "../utils"
-
+import { useCallback, useEffect, useState } from "react";
+import Navbar from "./Navbar";
 function Intro() {
+    const [bgImg, setBgImg] = useState('/images/hero-slider-3.jpg')
 
 
+    const getNextBg = useCallback(() => {
+        const allBackgrounds = ["/images/hero-slider-1.jpg", "/images/hero-slider-2.jpg", "/images/hero-slider-3.jpg"]
+        return allBackgrounds[Math.floor(Math.random() * 3)]
+    }, [])
+    const changeBg = () => {
+        setBgImg(getNextBg())
+    }
+    //setInterval(changeBg, 2000)
     return (
-        <main className=" h-[100vh]">
-            <div className="flex overflow-hidden lg:pl-32 lg:pr-32 flex-col gap-0">
-
-                <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1, }} transition={{ duration: 0.7 }} className="text-7xl mt-44  font-bold italic text-white  h-fit text-center font-sans lg:scale-150 ">Resto fast food delivery</motion.h1>
-                <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1, }} transition={{ duration: 0.7 }} className="lg:text-7xl text-5xl  font-bold italic text-[#f6de97]  h-fit text-center font-sans mt-5 lg:scale-125">you order we deliver </motion.h1>
-                <motion.div initial={{ opacity: 0, y: 75 }} animate={{ opacity: 1, y: 0 }} className="flex ml-auto mr-auto mt-8 gap-8">
-                    <button className="bg-white rounded-xl font-sans font-semibold text-md py-3 px-6 border-2 hover:border-black z-10" onClick={() => redirectTo("/menu")} >Our Menu</button>
-
-                    <button className="bg-black text-white py-3 px-6 rounded-xl font-sans font-semibold text-md hover:cursor-pointer z-10 hover:border-white   hover:border-[1px]" onClick={() => redirectTo("/register")}>Register Now</button>
-                </motion.div>
-            </div>
-
-        </main >
+        <div
+            style={{ backgroundImage: `url(${bgImg})`, }}
+            className="h-[1000px] bg-center bg-no-repeat bg-cover relative transition-all duration-700 "
+        >
+            <Navbar />
+            <Idk />
+            <svg
+                className="absolute bottom-[0%]"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 250"
+            >
+                <path
+                    fill="#191919"
+                    fillOpacity="1"
+                    d="M0,192L40,170.7C80,149,160,107,240,85.3C320,64,400,64,480,101.3C560,139,640,213,720,218.7C800,224,880,160,960,117.3C1040,75,1120,53,1200,48C1280,43,1360,53,1400,58.7L1440,64L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+                ></path>
+            </svg>
+        </div>
     )
 }
 export default Intro
+function Idk() {
+    return (<div className="mt-[15vh] flex flex-col">
+        <p className="text-[#e4c590] text-lg  text-center font-semibold tracking-widest	">AMAZING & DELICIOUS</p>
+        <p className="bg-[url(/images/separator.svg)] w-full h-4 mt-5 bg-no-repeat bg-center" > </p>
+        <h1 className="text-5xl lg:text-9xl leading-tight font-serif font-light italic text-white text-center">For the love of<br /> delicious food</h1>
+        <h4 className="text-white text-lg lg:text-xl text-center tracking-wide">Come with family & feel the joy of mouthwatering food</h4>
+
+        <a className="hover:bg-[#e4c590]  hover:text-black transition-all text-[#e4c590] border-2 border-[#e4c590] px-8 py-4 font-semibold ml-auto mr-auto mt-8 z-50" href="/menu">VIEW OUR MENU</a>
+    </div>)
+
+}
